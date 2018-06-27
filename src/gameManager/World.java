@@ -16,6 +16,7 @@ public class World {
 
 	// This creates a 2 dimensional array that holds Biomes in each place
 	private static Biomes[][] map;
+	private static Biomes[][] mapVis;
 
 	public World(int xSize, int ySize) {
 		Biomes[][] worldMap = new Biomes[xSize][ySize];
@@ -73,12 +74,11 @@ public class World {
 				// This if statement will actually manipulate the selected biome based on the
 				// surrounding biomes
 				// Temperatures
-				if (tempChange == genTemperatureChange.Up) {
-					int temp;
+				if (tempChange == genTemperatureChange.Up && y != 0) {
 					map[x][y].setType(1 + map[x][y - 1].getType()); // create setType method for Biomes
-				} else if (tempChange == genTemperatureChange.Down) {
+				} else if (tempChange == genTemperatureChange.Down && y != 0) {
 					map[x][y].setType(map[x][y - 1].getType() - 1);
-				} else {
+				} else if(tempChange == genTemperatureChange.Stay && y != 0) {
 					map[x][y].setType(map[x][y - 1].getType());
 				}
 			}
