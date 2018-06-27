@@ -6,11 +6,15 @@ import biomes.*;
 
 public class World {
 
-	enum genTemperatureChange{
-		Up,
-		Down,
-		Stay
+	// Creates different temperature scales to enable world to change as it
+	// generates
+	// Up means the temperature goes up, Down is vice versa, and Stay keeps the
+	// temperature consistent.
+	enum genTemperatureChange {
+		Up, Down, Stay
 	}
+
+	// This creates a 2 dimensional array that holds Biomes in each place
 	private static Biomes[][] map;
 
 	public World(int xSize, int ySize) {
@@ -19,12 +23,15 @@ public class World {
 		System.out.println("World Size Succsefuly Initialized!");
 	}
 
+	// This Begins to generate the actual map of the world by creating a "start
+	// biome"
 	public void generateMap() {
 		// This will create the world via multiplication table generation algorithm
 		Random startBiome = new Random();
 		Random upDownGen = new Random();
 		genTemperatureChange tempChange = genTemperatureChange.Stay;
-		
+
+		// This switch statement will choose what biome will be created first.
 		switch (startBiome.nextInt()) {
 		case 1:
 			map[0][0] = new Tundra();
@@ -54,18 +61,26 @@ public class World {
 		for (int x = 1; x < map.length; x++) {
 			for (int y = 1; y < map[y].length; y++) {
 				int nextInt = upDownGen.nextInt(5);
-				if ( nextInt == 1) {
+				// This if statement will decide how the maps biomes will change temperature
+				// hence changing what biome shows up next
+				if (nextInt == 1) {
 					tempChange = genTemperatureChange.Up;
-				} else if(nextInt == 5) {
+				} else if (nextInt == 5) {
 					tempChange = genTemperatureChange.Down;
-				}else {
+				} else {
 					tempChange = genTemperatureChange.Stay;
 				}
-				//Random Biome = new Random();
-					if(tempChange == genTemperatureChange.Up) {
-						int temp;
-						map[x][y] += map[x][y-1]; //create setType method for Biomes
-					}
+				// This if statement will actually manipulate the selected biome based on the
+				// surrounding biomes
+				// Temperatures
+				if (tempChange == genTemperatureChange.Up) {
+					int temp;
+					map[x][y].setType(1 + map[x][y - 1].getType()); // create setType method for Biomes
+				} else if (tempChange == genTemperatureChange.Down) {
+					map[x][y].setType(map[x][y - 1].getType() - 1);
+				} else {
+					map[x][y].setType(map[x][y - 1].getType());
+				}
 			}
 		}
 

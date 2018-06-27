@@ -14,35 +14,37 @@ public class Biomes {
 	
 	public void setType(int x) {
 		typeNumber = x;
+		createObject();
 	}
 	
 	private static Biomes createObject() {
-		switch (startBiome.nextInt()) {
+		Biomes temp = null;
+		switch (typeNumber) {
 		case 1:
-			map[0][0] = new Tundra();
+			temp = new Tundra();
 			break;
 		case 2:
-			map[0][0] = new Taiga();
+			temp = new Taiga();
 			break;
 		case 3:
-			map[0][0] = new TemperateDeciduousForest();
+			temp = new TemperateDeciduousForest();
 			break;
 		case 4:
-			map[0][0] = new TropicalRainforest();
+			temp = new TropicalRainforest();
 			break;
 		case 5:
-			map[0][0] = new Savanna();
+			temp = new Savanna();
 			break;
 		case 6:
-			map[0][0] = new Grasslands();
+			temp = new Grasslands();
 			break;
 		case 7:
-			map[0][0] = new Dessert();
+			temp = new Dessert();
 			break;
 		default:
 			break;
 		}
-		return newBiome;
+		return temp;
 	}
 }
 
