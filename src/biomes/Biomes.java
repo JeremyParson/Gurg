@@ -4,8 +4,8 @@ public class Biomes {
 	
 	private static int typeNumber;//typeNumber in Biomes creates other objects.
 	
-	public Biomes(){
-		typeNumber = 0;
+	public Biomes(int x){
+		typeNumber = x;
 	}
 	
 	public int getType() {
