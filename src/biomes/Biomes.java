@@ -17,6 +17,37 @@ public class Biomes {
 		createObject();
 	}
 	
+	public void getBiome() {
+		switch (typeNumber) {
+		case 0:
+			System.out.println("Nothing...");
+			break;
+		case 1:
+			System.out.println("Tundra");
+			break;
+		case 2:
+			System.out.println("Taiga");
+			break;
+		case 3:
+			System.out.println("Temperate Decideos Forest");
+			break;
+		case 4:
+			System.out.println("Tropical Rain Forest");
+			break;
+		case 5:
+			System.out.println("Savanna");
+			break;
+		case 6:
+			System.out.println("Grasslands");
+			break;
+		case 7:
+			System.out.println("Dessert");
+			break;
+		default:
+			break;
+		}
+	}
+	
 	private static Biomes createObject() {
 		Biomes temp = null;
 		switch (typeNumber) {
