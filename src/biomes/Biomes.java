@@ -51,7 +51,9 @@ public class Biomes {
 		
 		public char getSymbol() {
 			char charNum = 0;
-			if(typeNumber == 1) {
+			if(typeNumber == 0) {
+				charNum = 176;
+			}else if(typeNumber == 1) {
 				charNum = 176;
 			}else if(typeNumber == 2) {
 				charNum = 177;

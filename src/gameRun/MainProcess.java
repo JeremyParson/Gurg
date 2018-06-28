@@ -52,7 +52,8 @@ public class MainProcess {
 		Scanner ioScanner = new Scanner(System.in);
 		World newWorld = new World(xSize, ySize);
 		ioScanner.close();
-		newWorld.showMap();
+		//newWorld.testMap();
+		//newWorld.showMap();
 	}
 	
 	public static void forceRunMode() {
