@@ -48,6 +48,30 @@ public class Biomes {
 		}
 	}
 	
+		
+		public char getSymbol() {
+			char charNum = 0;
+			if(typeNumber == 1) {
+				charNum = 176;
+			}else if(typeNumber == 2) {
+				charNum = 177;
+			}else if(typeNumber == 3) {
+				charNum = 157;
+			}else if(typeNumber == 4) {
+				charNum = 156;
+			}else if(typeNumber == 5) {
+				charNum = 178;
+			}else if(typeNumber == 6) {
+				charNum = 34;
+			}else if(typeNumber == 7) {
+				charNum = 35;
+			}else{
+				charNum = 1;
+			}
+			return charNum;
+		}
+
+	
 	private static Biomes createObject() {
 		Biomes temp = null;
 		switch (typeNumber) {

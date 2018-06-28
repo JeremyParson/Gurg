@@ -37,28 +37,51 @@ public class World {
 		// This switch statement will choose what biome will be created first.
 		switch (startBiome.nextInt(7)) {
 		case 0:
-			map[0][0] = new Tundra();
+			for (int x = 0; x < map.length; x++) {
+				map[x][0] = new Tundra();
+			}
+
 			break;
 		case 1:
-			map[0][0] = new Tundra();
-			break;
+			for (int x = 0; x < map.length; x++) {
+				map[x][0] = new Tundra();
+			}
+
 		case 2:
-			map[0][0] = new Taiga();
+			for (int x = 0; x < map.length; x++) {
+				map[x][0] = new Taiga();
+			}
 			break;
+
 		case 3:
-			map[0][0] = new TemperateDeciduousForest();
+			for (int x = 0; x < map.length; x++) {
+				map[x][0] = new TemperateDeciduousForest();
+			}
 			break;
+
 		case 4:
-			map[0][0] = new TropicalRainforest();
+			for (int x = 0; x < map.length; x++) {
+				map[x][0] = new TropicalRainforest();
+			}
 			break;
+
 		case 5:
-			map[0][0] = new Savanna();
+			for (int x = 0; x < map.length; x++) {
+				map[x][0] = new Savanna();
+			}
 			break;
+
 		case 6:
-			map[0][0] = new Grasslands();
+			for (int x = 0; x < map.length; x++) {
+				map[x][0] = new Grasslands();
+			}
+
 			break;
 		case 7:
-			map[0][0] = new Dessert();
+			for (int x = 0; x < map.length; x++) {
+				map[x][0] = new Dessert();
+			}
+
 			break;
 		default:
 			break;
@@ -68,12 +91,12 @@ public class World {
 
 		for (int x = 1; x < map.length; x++) {
 			for (int y = 0; y < map[x].length; y++) {
-				int nextInt = upDownGen.nextInt(5);
+				int nextInt = upDownGen.nextInt(3);
 				// This if statement will decide how the map's biomes will change temperature
 				// hence changing what biome shows up next
 				if (nextInt == 1) {
 					tempChange = genTemperatureChange.Up;
-				} else if (nextInt == 5) {
+				} else if (nextInt == 3) {
 					tempChange = genTemperatureChange.Down;
 				} else {
 					tempChange = genTemperatureChange.Stay;
@@ -138,7 +161,7 @@ public class World {
 					}
 
 				} else if (tempChange == genTemperatureChange.Stay && y != 0) {
-					newBiomeTemp = map[x][y - 1].getType();
+					newBiomeTemp = map[0][0].getType();
 					switch (newBiomeTemp) {
 					case 1:
 						map[x][y] = new Tundra();
@@ -250,12 +273,51 @@ public class World {
 					}
 				}
 			}
+
+			for (int z = 1; x < map.length; x++) {
+				for (int y = 0; y < map[x].length; y++) {
+					if (map[z][y] == null) {
+						Random newBiomeTemp1 = new Random();
+						switch (newBiomeTemp1.nextInt(7)) {
+						case 1:
+							map[z][y] = new Tundra();
+							break;
+						case 2:
+							map[z][y] = new Taiga();
+							break;
+						case 3:
+							map[z][y] = new TemperateDeciduousForest();
+							break;
+						case 4:
+							map[z][y] = new TropicalRainforest();
+							break;
+						case 5:
+							map[z][y] = new Savanna();
+							break;
+						case 6:
+							map[z][y] = new Grasslands();
+							break;
+						case 7:
+							map[z][y] = new Dessert();
+							break;
+						default:
+							break;
+						}
+
+					}
+				}
+			}
 		}
 
 	}
 
 	public void showMap() {
-
+		for (int x = 0; x < map.length; x++) {
+			for (int y = 0; y < map[x].length; y++) {
+				System.out.print(map[x][y].getSymbol());
+			}
+			System.out.println("");
+		}
 	}
 
 	public void regenerateMap() {
