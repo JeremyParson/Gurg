@@ -140,39 +140,18 @@ public class World {
 					 */
 			}
 
-			/*for (int z = 1; x < map.length; x++) {
-				for (int y = 0; y < map[x].length; y++) {
-					if (map[z][y] == null) {
-						Random newBiomeTemp1 = new Random();
-						switch (newBiomeTemp1.nextInt(7)) {
-						case 1:
-							map[z][y] = new Tundra();
-							break;
-						case 2:
-							map[z][y] = new Taiga();
-							break;
-						case 3:
-							map[z][y] = new TemperateDeciduousForest();
-							break;
-						case 4:
-							map[z][y] = new TropicalRainforest();
-							break;
-						case 5:
-							map[z][y] = new Savanna();
-							break;
-						case 6:
-							map[z][y] = new Grasslands();
-							break;
-						case 7:
-							map[z][y] = new Dessert();
-							break;
-						default:
-							break;
-						}
-
-					}
-				}
-			}*/
+			/*
+			 * for (int z = 1; x < map.length; x++) { for (int y = 0; y < map[x].length;
+			 * y++) { if (map[z][y] == null) { Random newBiomeTemp1 = new Random(); switch
+			 * (newBiomeTemp1.nextInt(7)) { case 1: map[z][y] = new Tundra(); break; case 2:
+			 * map[z][y] = new Taiga(); break; case 3: map[z][y] = new
+			 * TemperateDeciduousForest(); break; case 4: map[z][y] = new
+			 * TropicalRainforest(); break; case 5: map[z][y] = new Savanna(); break; case
+			 * 6: map[z][y] = new Grasslands(); break; case 7: map[z][y] = new Dessert();
+			 * break; default: break; }
+			 * 
+			 * } } }
+			 */
 		}
 
 	}
@@ -190,7 +169,28 @@ public class World {
 	public void showMap() {
 		for (int x = 0; x < map.length; x++) {
 			for (int y = 0; y < map[x].length; y++) {
-				System.out.print(map[x][y].getSymbol());
+				char charNum = 0;
+				int typeNumber = map[x][y].getType();
+				if (typeNumber == 0) {
+					charNum = 176;
+				} else if (typeNumber == 1) {
+					charNum = 176;
+				} else if (typeNumber == 2) {
+					charNum = 177;
+				} else if (typeNumber == 3) {
+					charNum = 157;
+				} else if (typeNumber == 4) {
+					charNum = 156;
+				} else if (typeNumber == 5) {
+					charNum = 178;
+				} else if (typeNumber == 6) {
+					charNum = 34;
+				} else if (typeNumber == 7) {
+					charNum = 35;
+				} else {
+					charNum = 1;
+				}
+				System.out.print(charNum);
 			}
 			System.out.println("");
 		}

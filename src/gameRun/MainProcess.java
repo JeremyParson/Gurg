@@ -31,8 +31,8 @@ public class MainProcess {
 			int x = ioScanner.nextInt();
 			System.out.println("Set Map y size");
 			int y = ioScanner.nextInt();
-			createNewWorld(x, y);
-			
+			World newWorld = createNewWorld(x, y);
+			newWorld.showMap();
 			break;
 
 		case 2:
@@ -48,12 +48,12 @@ public class MainProcess {
 		ioScanner.close();
 	}
 
-	private static void createNewWorld(int xSize, int ySize) {
+	private static World createNewWorld(int xSize, int ySize) {
 		Scanner ioScanner = new Scanner(System.in);
 		World newWorld = new World(xSize, ySize);
 		ioScanner.close();
 		//newWorld.testMap();
-		//newWorld.showMap();
+		return newWorld;
 	}
 	
 	public static void forceRunMode() {
